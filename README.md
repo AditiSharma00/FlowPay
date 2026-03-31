@@ -1,7 +1,6 @@
 # FlowPay
 
-FlowPay is an AI-assisted multi-step form builder for merchant onboarding, conditional workflows, and response management.
-
+FlowPay is a schema-driven onboarding workflow platform that enables teams to design, manage, and deploy dynamic multi-step forms with conditional logic and AI-assisted schema generation.
 ## Overview
 
 FlowPay helps teams create dynamic onboarding and workflow forms without building each flow from scratch. The product is focused on a modern builder experience: schema-driven rendering, visual editing, conditional logic, multi-step forms, and a lightweight backend for publishing and collecting responses.
