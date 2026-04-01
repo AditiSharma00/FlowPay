@@ -97,6 +97,7 @@ export function SettingsPanel() {
           : 'Shape the step title and description first so the form stays easy to scan as it grows.'
       }
       className="h-full"
+      bodyClassName="xl:max-h-[72vh] xl:overflow-y-auto xl:pr-1"
     >
       <div className="space-y-5 text-sm">
         <div className="flex items-center justify-between gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-2">

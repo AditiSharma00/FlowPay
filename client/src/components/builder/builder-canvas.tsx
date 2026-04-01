@@ -263,6 +263,7 @@ export function BuilderCanvas() {
       title="Builder Canvas"
       description="Click to edit, drag to reorder, duplicate common structure, and remove questions or categories without losing flow."
       className="h-full"
+      bodyClassName="xl:max-h-[72vh] xl:overflow-y-auto xl:pr-1"
       action={
         <button
           type="button"

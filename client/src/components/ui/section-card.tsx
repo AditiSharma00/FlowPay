@@ -4,10 +4,18 @@ type SectionCardProps = PropsWithChildren<{
   title: string
   description?: string
   className?: string
+  bodyClassName?: string
   action?: ReactNode
 }>
 
-export function SectionCard({ title, description, className = '', action, children }: SectionCardProps) {
+export function SectionCard({
+  title,
+  description,
+  className = '',
+  bodyClassName = '',
+  action,
+  children,
+}: SectionCardProps) {
   return (
     <section className={`rounded-3xl border border-slate-200 bg-white p-5 shadow-sm ${className}`.trim()}>
       <div className="mb-4 flex items-start justify-between gap-4">
@@ -17,7 +25,7 @@ export function SectionCard({ title, description, className = '', action, childr
         </div>
         {action ? <div className="shrink-0">{action}</div> : null}
       </div>
-      {children}
+      <div className={bodyClassName}>{children}</div>
     </section>
   )
 }
