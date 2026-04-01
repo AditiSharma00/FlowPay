@@ -6,7 +6,7 @@ type FieldRendererProps = {
 
 export function FieldRenderer({ field }: FieldRendererProps) {
   const sharedClasses =
-    'w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-emerald-400 focus:ring-4 focus:ring-emerald-100'
+    'w-full rounded-2xl border border-amber-100 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-amber-400 focus:ring-4 focus:ring-amber-100'
 
   switch (field.type) {
     case 'textarea':
@@ -26,10 +26,10 @@ export function FieldRenderer({ field }: FieldRendererProps) {
       )
     case 'radio':
       return (
-        <div className="space-y-3 rounded-2xl border border-slate-200 bg-white p-4">
+        <div className="space-y-3 rounded-2xl border border-amber-100 bg-gradient-to-br from-amber-50/80 to-white p-4">
           {field.options?.map((option) => (
             <label key={option.id} className="flex items-center gap-3 text-sm text-slate-700">
-              <input type="radio" name={field.name} value={option.value} className="h-4 w-4 accent-emerald-600" />
+              <input type="radio" name={field.name} value={option.value} className="h-4 w-4 accent-amber-500" />
               {option.label}
             </label>
           ))}
@@ -37,10 +37,10 @@ export function FieldRenderer({ field }: FieldRendererProps) {
       )
     case 'checkbox':
       return (
-        <div className="space-y-3 rounded-2xl border border-slate-200 bg-white p-4">
+        <div className="space-y-3 rounded-2xl border border-amber-100 bg-gradient-to-br from-amber-50/80 to-white p-4">
           {field.options?.map((option) => (
             <label key={option.id} className="flex items-center gap-3 text-sm text-slate-700">
-              <input type="checkbox" value={option.value} className="h-4 w-4 rounded accent-emerald-600" />
+              <input type="checkbox" value={option.value} className="h-4 w-4 rounded accent-amber-500" />
               {option.label}
             </label>
           ))}

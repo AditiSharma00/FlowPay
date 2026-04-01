@@ -57,8 +57,8 @@ function SortableFieldCard({
       ref={setNodeRef}
       style={style}
       className={[
-        'rounded-2xl border bg-white p-4 text-left transition',
-        isSelected ? 'border-emerald-400 ring-2 ring-emerald-200' : 'border-slate-200 hover:border-slate-300',
+        'rounded-2xl border bg-white/90 p-4 text-left transition',
+        isSelected ? 'border-amber-300 ring-2 ring-amber-100' : 'border-amber-100 hover:border-amber-200',
         isDragging ? 'opacity-70 shadow-lg' : '',
       ].join(' ')}
     >
@@ -66,7 +66,7 @@ function SortableFieldCard({
         <div className="flex min-w-0 flex-1 items-start gap-3">
           <button
             type="button"
-            className="mt-0.5 rounded-full p-2 text-slate-400 transition hover:bg-slate-100 hover:text-slate-600"
+            className="mt-0.5 rounded-full p-2 text-slate-400 transition hover:bg-amber-50 hover:text-amber-700"
             aria-label={`Reorder ${field.label}`}
             title="Drag to reorder"
             {...attributes}
@@ -89,7 +89,7 @@ function SortableFieldCard({
           <button
             type="button"
             onClick={() => onDuplicateField(field.id)}
-            className="rounded-full p-2 text-slate-400 transition hover:bg-sky-50 hover:text-sky-600"
+            className="rounded-full p-2 text-slate-400 transition hover:bg-amber-50 hover:text-amber-700"
             aria-label={`Duplicate ${field.label}`}
             title="Duplicate question"
           >
@@ -143,8 +143,8 @@ function SortableStepCard({
       ref={setNodeRef}
       style={style}
       className={[
-        'rounded-3xl border p-4 transition',
-        isStepSelected ? 'border-emerald-300 bg-emerald-50/50' : 'border-slate-200 bg-slate-50',
+        'rounded-[2rem] border p-4 transition',
+        isStepSelected ? 'border-amber-300 bg-amber-50/60' : 'border-amber-100 bg-white/70',
         isDragging ? 'opacity-75 shadow-lg' : '',
       ].join(' ')}
     >
@@ -152,7 +152,7 @@ function SortableStepCard({
         <div className="flex min-w-0 flex-1 items-start gap-3">
           <button
             type="button"
-            className="mt-0.5 rounded-full p-2 text-slate-400 transition hover:bg-white hover:text-slate-600"
+            className="mt-0.5 rounded-full p-2 text-slate-400 transition hover:bg-white hover:text-amber-700"
             aria-label={`Reorder ${step.title}`}
             title="Drag to reorder"
             {...attributes}
@@ -161,19 +161,19 @@ function SortableStepCard({
             <GripVertical className="h-4 w-4" />
           </button>
           <button type="button" onClick={() => onSelectStep(step.id)} className="min-w-0 text-left">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">Category {index + 1}</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-amber-500">Category {index + 1}</p>
             <h3 className="mt-1 text-lg font-semibold text-slate-900">{step.title}</h3>
             {step.description ? <p className="mt-1 text-sm text-slate-500">{step.description}</p> : null}
           </button>
         </div>
         <div className="flex items-center gap-2">
-          <span className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-600">
+          <span className="rounded-full border border-amber-100 bg-white px-3 py-1 text-xs font-medium text-slate-600 shadow-sm">
             {step.fields.length} questions
           </span>
           <button
             type="button"
             onClick={() => onDuplicateStep(step.id)}
-            className="rounded-full p-2 text-slate-400 transition hover:bg-sky-50 hover:text-sky-600"
+            className="rounded-full p-2 text-slate-400 transition hover:bg-amber-50 hover:text-amber-700"
             aria-label={`Duplicate ${step.title}`}
             title="Duplicate category"
           >
@@ -268,7 +268,7 @@ export function BuilderCanvas() {
         <button
           type="button"
           onClick={createStep}
-          className="inline-flex items-center gap-2 rounded-full bg-emerald-500 px-3 py-2 text-xs font-semibold text-white transition hover:bg-emerald-400"
+          className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-amber-500 to-orange-400 px-3 py-2 text-xs font-semibold text-white shadow-sm transition hover:from-amber-400 hover:to-orange-300"
         >
           <PlusSquare className="h-4 w-4" />
           Add category

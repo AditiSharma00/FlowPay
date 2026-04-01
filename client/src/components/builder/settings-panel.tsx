@@ -24,8 +24,8 @@ function TabButton({ id, label, activeTab, onSelect, disabled = false }: TabButt
       className={[
         'rounded-full px-3 py-2 text-xs font-semibold transition',
         activeTab === id
-          ? 'bg-slate-900 text-white shadow-sm'
-          : 'bg-white text-slate-500 hover:bg-slate-100 hover:text-slate-700',
+          ? 'bg-gradient-to-r from-slate-900 to-slate-700 text-white shadow-sm'
+          : 'bg-white text-slate-500 hover:bg-amber-50 hover:text-slate-700',
         disabled ? 'cursor-not-allowed opacity-40 hover:bg-white hover:text-slate-500' : '',
       ].join(' ')}
     >
@@ -81,7 +81,7 @@ export function SettingsPanel() {
         description="Select a category or question from the builder canvas to start editing."
         className="h-full"
       >
-        <div className="rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-6 text-sm text-slate-500">
+        <div className="rounded-2xl border border-dashed border-amber-200 bg-amber-50/70 p-6 text-sm text-amber-900">
           Nothing is selected yet. Start by clicking a category or question on the canvas.
         </div>
       </SectionCard>
@@ -100,12 +100,12 @@ export function SettingsPanel() {
       bodyClassName="xl:max-h-[72vh] xl:overflow-y-auto xl:pr-1"
     >
       <div className="space-y-5 text-sm">
-        <div className="flex items-center justify-between gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-2">
+        <div className="flex items-center justify-between gap-3 rounded-[1.5rem] border border-amber-100 bg-gradient-to-br from-amber-50 via-orange-50 to-white p-2">
           <button
             type="button"
             onClick={() => setScope('category')}
             className={[
-              'flex-1 rounded-2xl px-4 py-3 text-left transition',
+              'flex-1 rounded-[1.25rem] px-4 py-3 text-left transition',
               scope === 'category' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700',
             ].join(' ')}
           >
@@ -117,7 +117,7 @@ export function SettingsPanel() {
             onClick={() => selectedField && setScope('question')}
             disabled={!selectedField}
             className={[
-              'flex-1 rounded-2xl px-4 py-3 text-left transition',
+              'flex-1 rounded-[1.25rem] px-4 py-3 text-left transition',
               scope === 'question' && selectedField
                 ? 'bg-white text-slate-900 shadow-sm'
                 : 'text-slate-500 hover:text-slate-700',
@@ -131,7 +131,7 @@ export function SettingsPanel() {
           </button>
         </div>
 
-        <div className="flex flex-wrap gap-2 rounded-2xl bg-slate-100 p-1">
+        <div className="flex flex-wrap gap-2 rounded-[1.5rem] border border-amber-100 bg-white/80 p-1.5 shadow-sm">
           {tabs.map((tab) => (
             <TabButton
               key={tab.id}
@@ -146,9 +146,9 @@ export function SettingsPanel() {
 
         {scope === 'category' ? (
           <>
-            <div className="flex items-center justify-between gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+            <div className="flex items-center justify-between gap-3 rounded-[1.5rem] border border-amber-100 bg-gradient-to-br from-white via-amber-50 to-orange-50 px-4 py-3 shadow-sm">
               <div className="flex items-start gap-3">
-                <div className="rounded-2xl bg-white p-2 text-slate-500 shadow-sm">
+                <div className="rounded-2xl bg-white p-2 text-amber-700 shadow-sm">
                   <Layers3 className="h-4 w-4" />
                 </div>
                 <div>
@@ -162,7 +162,7 @@ export function SettingsPanel() {
                 <button
                   type="button"
                   onClick={() => duplicateStep(selectedStep.id)}
-                  className="inline-flex items-center gap-2 rounded-full bg-sky-50 px-3 py-2 text-xs font-semibold text-sky-600 transition hover:bg-sky-100"
+                  className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 text-xs font-semibold text-amber-700 shadow-sm transition hover:bg-amber-50"
                 >
                   <Copy className="h-4 w-4" />
                   Duplicate
@@ -189,7 +189,7 @@ export function SettingsPanel() {
                     type="text"
                     value={selectedStep.title}
                     onChange={(event) => updateSelectedStep('title', event.target.value)}
-                    className="w-full rounded-2xl border border-slate-200 px-4 py-3 text-slate-900 outline-none transition focus:border-emerald-400 focus:ring-4 focus:ring-emerald-100"
+                    className="w-full rounded-2xl border border-amber-100 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-amber-400 focus:ring-4 focus:ring-amber-100"
                   />
                 </div>
 
@@ -202,11 +202,11 @@ export function SettingsPanel() {
                     rows={4}
                     value={selectedStep.description ?? ''}
                     onChange={(event) => updateSelectedStep('description', event.target.value)}
-                    className="w-full rounded-2xl border border-slate-200 px-4 py-3 text-slate-900 outline-none transition focus:border-emerald-400 focus:ring-4 focus:ring-emerald-100"
+                    className="w-full rounded-2xl border border-amber-100 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-amber-400 focus:ring-4 focus:ring-amber-100"
                   />
                 </div>
 
-                <div className="rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-4 text-sm text-slate-600">
+                <div className="rounded-2xl border border-dashed border-amber-200 bg-amber-50/70 p-4 text-sm text-amber-950">
                   <p className="font-medium text-slate-700">Writing tip</p>
                   <p className="mt-1">
                     Keep category titles short and make descriptions outcome-focused so people know why they are being asked these questions.
@@ -214,7 +214,7 @@ export function SettingsPanel() {
                 </div>
               </div>
             ) : (
-              <div className="rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-5 text-sm text-slate-600">
+              <div className="rounded-2xl border border-dashed border-amber-200 bg-amber-50/70 p-5 text-sm text-amber-950">
                 <p className="font-medium text-slate-700">Appearance controls are next</p>
                 <p className="mt-1">
                   Step-level layout, dividers, and progress styling will live here once the base editing flow is fully stable.
@@ -224,7 +224,7 @@ export function SettingsPanel() {
           </>
         ) : selectedField ? (
           <>
-            <div className="flex items-center justify-between gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+            <div className="flex items-center justify-between gap-3 rounded-[1.5rem] border border-amber-100 bg-gradient-to-br from-white via-amber-50 to-orange-50 px-4 py-3 shadow-sm">
               <div>
                 <p className="font-medium text-slate-800">Selected question</p>
                 <p className="mt-1 text-xs text-slate-500">
@@ -235,7 +235,7 @@ export function SettingsPanel() {
                 <button
                   type="button"
                   onClick={() => duplicateField(selectedField.id)}
-                  className="inline-flex items-center gap-2 rounded-full bg-sky-50 px-3 py-2 text-xs font-semibold text-sky-600 transition hover:bg-sky-100"
+                  className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 text-xs font-semibold text-amber-700 shadow-sm transition hover:bg-amber-50"
                 >
                   <Copy className="h-4 w-4" />
                   Duplicate
@@ -262,7 +262,7 @@ export function SettingsPanel() {
                     type="text"
                     value={selectedField.label}
                     onChange={(event) => updateSelectedField('label', event.target.value)}
-                    className="w-full rounded-2xl border border-slate-200 px-4 py-3 text-slate-900 outline-none transition focus:border-emerald-400 focus:ring-4 focus:ring-emerald-100"
+                    className="w-full rounded-2xl border border-amber-100 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-amber-400 focus:ring-4 focus:ring-amber-100"
                   />
                 </div>
 
@@ -275,7 +275,7 @@ export function SettingsPanel() {
                     type="text"
                     value={selectedField.name}
                     onChange={(event) => updateSelectedField('name', event.target.value)}
-                    className="w-full rounded-2xl border border-slate-200 px-4 py-3 text-slate-900 outline-none transition focus:border-emerald-400 focus:ring-4 focus:ring-emerald-100"
+                    className="w-full rounded-2xl border border-amber-100 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-amber-400 focus:ring-4 focus:ring-amber-100"
                   />
                 </div>
 
@@ -288,13 +288,13 @@ export function SettingsPanel() {
                     rows={3}
                     value={selectedField.helperText ?? ''}
                     onChange={(event) => updateSelectedField('helperText', event.target.value)}
-                    className="w-full rounded-2xl border border-slate-200 px-4 py-3 text-slate-900 outline-none transition focus:border-emerald-400 focus:ring-4 focus:ring-emerald-100"
+                    className="w-full rounded-2xl border border-amber-100 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-amber-400 focus:ring-4 focus:ring-amber-100"
                   />
                 </div>
 
                 <div>
                   <p className="mb-2 block font-medium text-slate-700">Type</p>
-                  <div className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 capitalize text-slate-800">
+                  <div className="rounded-2xl border border-amber-100 bg-amber-50/70 px-4 py-3 capitalize text-slate-800">
                     {selectedField.type}
                   </div>
                 </div>
@@ -309,7 +309,7 @@ export function SettingsPanel() {
                       type="text"
                       value={selectedField.placeholder ?? ''}
                       onChange={(event) => updateSelectedField('placeholder', event.target.value)}
-                      className="w-full rounded-2xl border border-slate-200 px-4 py-3 text-slate-900 outline-none transition focus:border-emerald-400 focus:ring-4 focus:ring-emerald-100"
+                      className="w-full rounded-2xl border border-amber-100 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-amber-400 focus:ring-4 focus:ring-amber-100"
                     />
                   </div>
                 ) : null}
@@ -324,7 +324,7 @@ export function SettingsPanel() {
                       <button
                         type="button"
                         onClick={addOptionToSelectedField}
-                        className="inline-flex items-center gap-2 rounded-full bg-emerald-500 px-3 py-2 text-xs font-semibold text-white transition hover:bg-emerald-400"
+                        className="inline-flex items-center gap-2 rounded-full bg-amber-500 px-3 py-2 text-xs font-semibold text-white transition hover:bg-amber-400"
                       >
                         <Plus className="h-4 w-4" />
                         Add option
@@ -333,7 +333,7 @@ export function SettingsPanel() {
 
                     <div className="space-y-3">
                       {(selectedField.options ?? []).map((option, index) => (
-                        <div key={option.id} className="rounded-2xl border border-slate-200 bg-slate-50 p-3">
+                        <div key={option.id} className="rounded-2xl border border-amber-100 bg-white p-3 shadow-sm">
                           <div className="mb-3 flex items-center justify-between gap-3">
                             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-400">
                               Option {index + 1}
@@ -354,7 +354,7 @@ export function SettingsPanel() {
                                 type="text"
                                 value={option.label}
                                 onChange={(event) => updateOption(option.id, 'label', event.target.value)}
-                                className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-emerald-400 focus:ring-4 focus:ring-emerald-100"
+                                className="w-full rounded-2xl border border-amber-100 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-amber-400 focus:ring-4 focus:ring-amber-100"
                               />
                             </div>
                             <div>
@@ -363,7 +363,7 @@ export function SettingsPanel() {
                                 type="text"
                                 value={option.value}
                                 onChange={(event) => updateOption(option.id, 'value', event.target.value)}
-                                className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-emerald-400 focus:ring-4 focus:ring-emerald-100"
+                                className="w-full rounded-2xl border border-amber-100 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-amber-400 focus:ring-4 focus:ring-amber-100"
                               />
                             </div>
                           </div>
@@ -377,7 +377,7 @@ export function SettingsPanel() {
 
             {activeTab === 'validation' ? (
               <div className="space-y-4">
-                <label className="flex items-center justify-between rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+                <label className="flex items-center justify-between rounded-2xl border border-amber-100 bg-amber-50/70 px-4 py-3">
                   <span>
                     <span className="block font-medium text-slate-800">Required</span>
                     <span className="mt-1 block text-xs text-slate-500">
@@ -388,11 +388,11 @@ export function SettingsPanel() {
                     type="checkbox"
                     checked={selectedField.required ?? false}
                     onChange={(event) => updateSelectedField('required', event.target.checked)}
-                    className="h-4 w-4 rounded accent-emerald-600"
+                    className="h-4 w-4 rounded accent-amber-600"
                   />
                 </label>
 
-                <div className="rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-4 text-sm text-slate-600">
+                <div className="rounded-2xl border border-dashed border-amber-200 bg-amber-50/70 p-4 text-sm text-amber-950">
                   <p className="font-medium text-slate-700">Validation roadmap</p>
                   <p className="mt-1">Min/max rules, patterns, and file constraints will slot into this tab next.</p>
                 </div>
@@ -402,7 +402,7 @@ export function SettingsPanel() {
             {activeTab === 'logic' ? (
               <div className="space-y-4">
                 {selectedField.showIf ? (
-                  <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-600">
+                  <div className="rounded-2xl border border-amber-100 bg-amber-50/70 p-4 text-sm text-slate-600">
                     <p className="font-medium text-slate-700">Current visibility rule</p>
                     <p className="mt-2">
                       Show this question when <span className="font-medium text-slate-800">{selectedField.showIf.field}</span>{' '}
@@ -411,12 +411,12 @@ export function SettingsPanel() {
                     </p>
                   </div>
                 ) : (
-                  <div className="rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-4 text-sm text-slate-600">
+                  <div className="rounded-2xl border border-dashed border-amber-200 bg-amber-50/70 p-4 text-sm text-slate-600">
                     No `showIf` rule is connected to this question yet.
                   </div>
                 )}
 
-                <div className="rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-4 text-sm text-slate-600">
+                <div className="rounded-2xl border border-dashed border-amber-200 bg-amber-50/70 p-4 text-sm text-slate-600">
                   <div className="flex items-start gap-3">
                     <div className="rounded-2xl bg-white p-2 text-amber-500 shadow-sm">
                       <Sparkles className="h-4 w-4" />
@@ -434,20 +434,20 @@ export function SettingsPanel() {
 
             {activeTab === 'appearance' ? (
               <div className="space-y-4">
-                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-600">
+                <div className="rounded-2xl border border-amber-100 bg-amber-50/70 p-4 text-sm text-slate-600">
                   <p className="font-medium text-slate-700">Appearance direction</p>
                   <p className="mt-1">
                     Layout width, spacing density, and field presentation controls will live here as we expand the form theming system.
                   </p>
                 </div>
-                <div className="rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-4 text-sm text-slate-600">
+                <div className="rounded-2xl border border-dashed border-amber-200 bg-amber-50/70 p-4 text-sm text-slate-600">
                   Right now, the strongest customization lives in content, validation, and logic so we keep the MVP focused.
                 </div>
               </div>
             ) : null}
           </>
         ) : (
-          <div className="rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-6 text-sm text-slate-500">
+          <div className="rounded-2xl border border-dashed border-amber-200 bg-amber-50/70 p-6 text-sm text-slate-500">
             Select a question from the builder canvas to inspect and edit its settings.
           </div>
         )}
